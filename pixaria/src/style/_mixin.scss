@@ -1,0 +1,14 @@
+@mixin gallery($colAmount){
+    display: grid;
+    grid-template-columns: repeat($colAmount,1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
+    column-gap: 16px;
+    row-gap: 16px;
+}
+
+@mixin flexable($dir,$xDir,$yDir){
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $xDir;
+    align-items: $yDir;
+}
