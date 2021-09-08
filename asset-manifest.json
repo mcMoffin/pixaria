@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/pixaria/static/css/main.30c56b64.chunk.css",
+    "main.js": "/pixaria/static/js/main.7502cf53.chunk.js",
+    "main.js.map": "/pixaria/static/js/main.7502cf53.chunk.js.map",
+    "runtime-main.js": "/pixaria/static/js/runtime-main.cbbebf99.js",
+    "runtime-main.js.map": "/pixaria/static/js/runtime-main.cbbebf99.js.map",
+    "static/js/2.a49d30ff.chunk.js": "/pixaria/static/js/2.a49d30ff.chunk.js",
+    "static/js/2.a49d30ff.chunk.js.map": "/pixaria/static/js/2.a49d30ff.chunk.js.map",
+    "static/js/3.c7c2cde3.chunk.js": "/pixaria/static/js/3.c7c2cde3.chunk.js",
+    "static/js/3.c7c2cde3.chunk.js.map": "/pixaria/static/js/3.c7c2cde3.chunk.js.map",
+    "index.html": "/pixaria/index.html",
+    "static/css/main.30c56b64.chunk.css.map": "/pixaria/static/css/main.30c56b64.chunk.css.map",
+    "static/js/2.a49d30ff.chunk.js.LICENSE.txt": "/pixaria/static/js/2.a49d30ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cbbebf99.js",
+    "static/js/2.a49d30ff.chunk.js",
+    "static/css/main.30c56b64.chunk.css",
+    "static/js/main.7502cf53.chunk.js"
+  ]
+}
