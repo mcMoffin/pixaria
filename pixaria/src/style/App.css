@@ -20,10 +20,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-body.fiexed {
-  overflow-x: hidden;
-}
-
 button {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
@@ -59,6 +55,10 @@ button {
 .search .btn-search {
   height: 100%;
   border-radius: 0 5px 5px 0;
+}
+
+.prevent-scroll {
+  overflow-y: hidden;
 }
 
 .container {
@@ -106,17 +106,6 @@ button {
 }
 
 .container .hero-header {
-  width: 100%;
-  min-height: 588px;
-  padding-top: 88px;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 588px;
-  padding: 88px 32px 16px 32px;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -130,10 +119,16 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  height: 588px;
+  padding: 88px 32px 16px 32px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container .hero-header .hero-content {
-  width: 60%;
+  width: 100%;
 }
 
 .container .hero-header .hero-content h1 {
@@ -155,9 +150,16 @@ button {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.6);
   padding: 0 20%;
+  z-index: 999;
+  background-color: white;
+}
+
+.container .modal-bg .close-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black !important;
 }
 
 .container .modal-bg .modal {
@@ -167,12 +169,17 @@ button {
   padding: 16px;
   background-color: white;
   border-radius: 5px;
+  margin: auto;
 }
 
 .container .modal-bg .modal .modal-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -241,52 +248,60 @@ button {
 }
 
 .container .modal-bg .modal .modal-img-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  max-height: 650px;
+  height: calc(100vh - 150px);
+  text-align: center;
 }
 
 .container .modal-bg .modal .modal-img-container .modal-img {
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
+  margin: 0 auto;
 }
 
-.container .gallary-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 16px 0px;
-  padding: 16px;
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+.container .gallery-section {
+  margin: 1rem auto;
+  padding: 2rem;
 }
 
-.container .gallary-section h2 {
+.container .gallery-section h2 {
   -ms-flex-item-align: start;
       align-self: flex-start;
 }
 
-.container .gallary-section button {
+.container .gallery-section button {
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
 
-.container .gallary-section .gallary {
+.container .gallery-section .gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  margin: 16px 0px;
 }
 
-.container .gallary-section .gallary .gallary-img-container {
+.container .gallery-section .gallery .col:nth-child(1) {
+  margin-right: 1.45rem;
+}
+
+.container .gallery-section .gallery .col {
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+}
+
+.container .gallery-section .gallery .col .gallery-img-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -303,22 +318,18 @@ button {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
   width: 100%;
-  height: auto;
   margin-bottom: 16px;
+  height: auto;
   overflow: hidden;
 }
 
-.container .gallary-section .gallary .gallary-img-container .gallary-img {
+.container .gallery-section .gallery .col .gallery-img-container img {
   display: block;
-  height: 100%;
-  margin-bottom: -80px;
-  position: relative;
-  z-index: 79;
-  pointer-events: all;
-  cursor: pointer;
+  width: 100%;
+  height: auto;
 }
 
-.container .gallary-section .gallary .gallary-img-container .img-info {
+.container .gallery-section .gallery .col .gallery-img-container .img-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -332,121 +343,104 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  cursor: pointer;
   width: 100%;
-  height: 80px;
-  padding-right: 10px;
-  position: relative;
-  z-index: 80;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(30%), to(rgba(0, 0, 0, 0.6)));
-  background: linear-gradient(transparent, 30%, rgba(0, 0, 0, 0.6));
+  margin-top: -46px;
+  padding: 0 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.container .gallary-section .gallary .gallary-img-container .img-info .photographer-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  min-width: 100px;
-  height: 30px;
-  padding: 0px 16px;
-  color: white;
-  font-size: 15px;
+.container .gallery-section .gallery .col .gallery-img-container .img-info a {
+  color: #fff;
 }
 
-.container .gallary-section .gallary .gallary-img-container .img-info .photographer-info .photographer-pic {
-  width: 30px;
-  height: 30px;
-  background-color: black;
-  margin-right: 16px;
-  border-radius: 25px;
-  overflow: hidden;
-}
-
-.container .gallary-section .gallary .gallary-img-container .img-info .photographer-info .photographer-pic img {
-  width: 100%;
-  height: 100%;
+/* 4k and up */
+@media only screen and (min-width: 1900px) {
+  .container .modal-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .container .modal-bg .close-btn {
+    color: white !important;
+  }
+  .container .modal-bg .modal .modal-img-container {
+    height: auto;
+  }
+  .container .hero-header .hero-content {
+    width: 60%;
+  }
+  .container .gallery-section {
+    max-width: 1850px;
+  }
+  .container .gallery-section .gallery .col:nth-child(2), .container .gallery-section .gallery .col:nth-child(3) {
+    margin-right: 1.45rem;
+  }
 }
 
 /* Desktop */
-@media only screen and (min-width: 769px) {
-  .gallary {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-    -ms-grid-rows: (1fr)[auto-fill];
-        grid-template-rows: repeat(auto-fill, 1fr);
-    -webkit-column-gap: 16px;
-            column-gap: 16px;
-    row-gap: 16px;
+@media only screen and (min-width: 1100px) and (max-width: 1899px) {
+  .container .modal-bg {
+    background-color: rgba(0, 0, 0, 0.6);
   }
-  .gallary .gallary-img-container {
-    margin-bottom: 0 !important;
+  .container .modal-bg .close-btn {
+    color: white !important;
   }
-}
-
-/* Tablet */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .gallary {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-    -ms-grid-rows: (1fr)[auto-fill];
-        grid-template-rows: repeat(auto-fill, 1fr);
-    -webkit-column-gap: 16px;
-            column-gap: 16px;
-    row-gap: 16px;
-  }
-  .gallary .gallary-img-container {
-    margin-bottom: 0 !important;
-  }
-}
-
-/* Small Tablet */
-@media only screen and (min-width: 321px) and (max-width: 480px) {
-  .gallary {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    -ms-grid-rows: (1fr)[auto-fill];
-        grid-template-rows: repeat(auto-fill, 1fr);
-    -webkit-column-gap: 16px;
-            column-gap: 16px;
-    row-gap: 16px;
-  }
-  .gallary .gallary-img-container {
-    margin-bottom: 0 !important;
-  }
-  .modal-info {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
-/* small mobile; (iPhone) */
-@media only screen and (max-width: 320px) {
-  .modal-info {
+  .container .modal-bg .modal .modal-info {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .modal-info {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+  .container .modal-bg .modal .modal-img-container {
+    height: auto;
+  }
+  .container .hero-header .hero-content {
+    width: 60%;
+  }
+  .container .gallery-section {
+    max-width: 1400px;
+    min-height: 1500px;
+  }
+  .container .gallery-section .gallery .col:nth-child(2) {
+    margin-right: 1.45rem;
   }
 }
+
+@media only screen and (min-width: 769px) and (max-width: 1899px) {
+  .container .modal-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .container .modal-bg .modal .modal-info {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .container .modal-bg .close-btn {
+    color: white !important;
+  }
+  .container .hero-header .hero-content {
+    width: 60%;
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .container .modal-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .container .modal-bg .modal .modal-info {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .container .modal-bg .close-btn {
+    color: white !important;
+  }
+  .container .hero-header .hero-content {
+    width: 80%;
+  }
+}
+
+/* Small Tablet */
+/* small mobile; (iPhone) */
 /*# sourceMappingURL=App.css.map */

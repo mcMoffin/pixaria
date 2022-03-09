@@ -1,14 +1,10 @@
 import {useState, useEffect} from 'react';
+import $ from 'jquery'
 import './style/App.css';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-import Galary from './components/Gallary';
+import Gallery from './components/Gallery';
 import Modal from './components/Modal';
-
-/*
-  - search must submit a search request and set the results into the first 4 images
-    - the more btn must load more results. 
-*/
 
 function App() {
 
@@ -67,25 +63,34 @@ function App() {
     setModalPic( pictures[index] );
   }
 
+
   return (
     <div className="container">
       <NavBar
         search={ (query)=> { curatedPhotos(8,query); setSubmitedUrl(query) } }
         query={(query)=> setTitle(query)}
       />
-      {typeof modalPic === 'object' && <Modal picInfo={modalPic} close={ ()=>  setModalPic('') } />}
-      <Header 
+
+      {// checks if "modalPic" has an object stored, if true creates the <modal />
+        typeof modalPic === 'object' && <Modal picInfo={modalPic} close={ ()=>{
+          setModalPic('');
+          $('body').removeClass('prevent-scroll');
+        }} />
+      }
+
+      <Header
         picUrl={ headerInfo.imgUrl }
         posterName={ headerInfo.name }
         search={ (query)=> { curatedPhotos(8,query); setSubmitedUrl(query) } }
         query={ (query)=> setTitle(query) }
       />
-      <Galary
-        GalaryTite={title}
-        pics={ pictures }
+
+      {<Gallery
+        GalleryTitle={title}
+        Pics={pictures}
         onBtnClick={ ()=> curatedPhotos(pictures.length + 6, submitedUrl) }
-        modal={ (id)=> modal(id) }
-      /> 
+        Modal={ (id)=> modal(id) }
+      />}
       
     </div>
   );

@@ -1,29 +1,33 @@
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
+import { faBorderStyle, faFileDownload } from '@fortawesome/free-solid-svg-icons';
+import $ from 'jquery'
 
-const Images = ({ name, picUrl, largPic, modal, id }) => {
+const Images = ({ posterImg, name, posterPg, picUrl, largPic, Modal, id }) => {
     
     return (
-        <div className="gallary-img-container">
-            <img 
+        <div className="gallery-img-container">
+            <img
                 src={ picUrl }
-                className="gallary-img"
-                onClick={ ()=> modal(id) }
+                onClick={ ()=>{
+                    Modal(id);
+                    $('body').addClass('prevent-scroll');
+                }}
             ></img>
 
             <div className="img-info">
                 
                 <div className="photographer-info">
-                    <span className="photographer-name">{ name }</span>
+                    {/* <img className='posterImg' src={posterImg}/> */}
+                    <a href={posterPg} className="photographer-name"><h1>{name}</h1></a>
                 </div>
 
                 <div className="img-actions">
                     <FontAwesomeIcon 
                         className="img-actions-icons" 
-                        icon={ faFileDownload } 
-                        style={ iconStyle }
-                        onClick={ ()=> window.open(largPic) }
+                        icon={faFileDownload} 
+                        style={iconStyle}
+                        onClick={()=> window.open(largPic)}
                     />
                 </div>
             </div>

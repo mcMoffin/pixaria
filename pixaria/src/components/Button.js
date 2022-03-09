@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 
-const Button = ({classN,txtColor,bgColor,btnText,onClick}) => {
+const Button = ({className,txtColor,bgColor,btnText,onClick}) => {
 
     return (
         <button 
             onClick={onClick} 
-            className={`btn ${classN}`}
+            className={`btn ${className}`}
             style={{backgroundColor:bgColor, color:txtColor}}
         >
             {btnText}
@@ -17,12 +17,12 @@ function defaultFunc(){
     console.log("no actions assigned");
 }
 
-Button.defaultProps = {
+/* Button.defaultProps = {
     bgColor: 'pink',
-    txtColor: 'green',
+    txtColor: '#000',
     btnText: "Text",
     onClick: defaultFunc
-}
+} */
 
 Button.propTypes = {
     text: PropTypes.string,
