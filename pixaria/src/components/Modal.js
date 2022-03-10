@@ -9,18 +9,16 @@ const Modal = ({picInfo,close}) => {
 
     return (
         <div className="modal-bg">
-            
             <Button 
-                className="closeBtn"
-                txtColor={'white'}
-                bgColor={'transparent'}
-                btnText={'X'}
                 onClick={ close }
+                className='close-btn'
+                bgColor='transparent'  
+                btnText="X"
             />
-            
+        
             <div className="modal">
                 <span className="modal-info">
-                    <h1>{picInfo.photographer}</h1>
+                    <a href={picInfo.photographer_url}><h1>{picInfo.photographer}</h1></a>
 
                     <div className="modal-actions">
                         <Button
