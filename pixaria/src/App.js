@@ -38,7 +38,7 @@ function App() {
     const data = await dataFetch.json().catch( err => console.log(`Failed to fetch Header`) )
 
     const currentDay = new Date().getDate();
-    const randoNum = currentDay > 15 ? currentDay % 15 : currentDay;
+    const randoNum = currentDay >= 15 ? currentDay % 15 : currentDay;
     
     setHeaderInfo( {imgUrl: data.photos[randoNum].src.original, name:  data.photos[randoNum].photographer} );
   }

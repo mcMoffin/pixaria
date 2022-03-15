@@ -58,7 +58,7 @@ const Gallery = ( {GalleryTitle,Pics,onBtnClick,Modal} ) => {
         }
         return colPics; 
     }
-console.log(Pics);
+
     return (
         <div className="gallery-section">
             
